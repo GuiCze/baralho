@@ -3,11 +3,11 @@ const db = [];
 let proxId = 1;
 
 const model = (body, id = proxId++) => {
-  if (body.nome != "" && body.nome != undefined) {
+  if (body.nome != "" && body.nome != undefined  && body.cor != "" && body.cor != undefined) {
     return {
       id,
       nome: body.nome,
-      cor: body.cor,
+      cor: body.cor
     };
   }
 };
@@ -43,7 +43,7 @@ const destroy = (id) => {
     db.splice(indice, 1);
     return 200;
   }
-  return 400;
+  return 404;
 };
 
 module.exports = {
@@ -52,4 +52,5 @@ module.exports = {
   show,
   update,
   destroy,
+  db
 };
